@@ -1,3 +1,5 @@
+import { Label } from "@/components/atoms/Label";
+
 export default function Home() {
   return (
     <div
@@ -15,6 +17,9 @@ export default function Home() {
           <p className="text-sm md:text-base opacity-75">
             Crea il tuo fotolibro personalizzato
           </p>
+          <Label className="mt-6" required>
+            Esempio di etichetta richiesta
+          </Label>
         </header>
       </div>
     </div>
