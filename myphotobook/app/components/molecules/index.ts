@@ -2,3 +2,4 @@
 export { ShippingForm } from "./ShippingForm";
 export { BookFormatSelector } from "./BookFormatSelector";
 export { PageCountSelector } from "./PageCountSelector";
+export { ExtraOptions } from "./ExtraOptions";
