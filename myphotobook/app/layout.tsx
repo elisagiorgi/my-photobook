@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { PhotobookProvider } from "@/app/context/PhotobookContext";
 
 export const metadata: Metadata = {
   title: "My Photo Book",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="it">
-      <body>{children}</body>
+      <body>
+        <PhotobookProvider>{children}</PhotobookProvider>
+      </body>
     </html>
   );
 }

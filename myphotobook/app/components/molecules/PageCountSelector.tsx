@@ -1,7 +1,7 @@
 "use client";
-
 import * as Slider from "@radix-ui/react-slider";
 import { Label } from "@/components/atoms/Label";
+import { Icon } from "@/components/atoms/Icon";
 
 interface PageCountSelectorProps {
   pages: number;
@@ -64,7 +64,7 @@ export function PageCountSelector({ pages, onChange }: PageCountSelectorProps) {
             color: "var(--warning-foreground)",
           }}
         >
-          <span className="text-lg">⚠️</span>
+          <Icon name="warning" size="md" />
           <div>
             <strong>Attenzione:</strong> il costo aumenterà per l'aggiunta di
             pagine extra.

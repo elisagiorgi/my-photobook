@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/atoms/Button";
 import { Input } from "@/components/atoms/Input";
 import { Label } from "@/components/atoms/Label";
+import { Icon } from "@/components/atoms/Icon";
 import {
   shippingFormSchema,
   type ShippingFormData,
@@ -159,7 +160,9 @@ export function ShippingForm({ onSave, disabled = false }: ShippingFormProps) {
           type="submit"
           variant="primary"
           disabled={disabled || isSubmitting}
+          className="flex items-center gap-2"
         >
+          <Icon name={isSubmitting ? "hourglass_empty" : "save"} size="sm" />
           {isSubmitting ? "Salvataggio..." : "Salva indirizzo"}
         </Button>
       </div>
