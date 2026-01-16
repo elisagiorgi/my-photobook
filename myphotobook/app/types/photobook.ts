@@ -48,5 +48,7 @@ export const isShippingDataComplete = (data: ShippingData | null): boolean => {
 export const isBookConfigurationComplete = (
   config: BookConfiguration
 ): boolean => {
-  return !!(config.format && config.size);
+  const basicComplete = !!(config.format && config.size);
+  const coverLayoutComplete = config.customCover ? !!config.coverLayout : true;
+  return basicComplete && coverLayoutComplete;
 };

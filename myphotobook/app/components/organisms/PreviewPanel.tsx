@@ -3,16 +3,21 @@ import {
   isShippingDataComplete,
   isBookConfigurationComplete,
 } from "@/app/types/photobook";
-import { CircleCheck, TriangleAlert } from "lucide-react";
+import { CircleCheck, Smile, TriangleAlert } from "lucide-react";
+import { Button } from "@/components/atoms/Button";
 
 interface PreviewPanelProps {
   state: PhotobookState;
+  onConfirmOrder: () => void;
 }
 
-export function PreviewPanel({ state }: PreviewPanelProps) {
-  const { shippingData, shippingDataSaved, bookConfiguration } = state;
+export function PreviewPanel({ state, onConfirmOrder }: PreviewPanelProps) {
+  const { shippingData, shippingDataSaved, bookConfiguration, orderConfirmed } =
+    state;
   const shippingComplete = isShippingDataComplete(shippingData);
   const bookComplete = isBookConfigurationComplete(bookConfiguration);
+  const canConfirm =
+    shippingComplete && shippingDataSaved && bookComplete && !orderConfirmed;
 
   const formatDisplayName: Record<string, string> = {
     square: "Quadrato",
@@ -71,6 +76,8 @@ export function PreviewPanel({ state }: PreviewPanelProps) {
           </p>
         )}
       </section>
+      <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
+
       <section className="space-y-2">
         <h3 className="font-semibold flex items-center gap-2">
           {shippingComplete && shippingDataSaved ? (
@@ -106,62 +113,118 @@ export function PreviewPanel({ state }: PreviewPanelProps) {
       {(bookConfiguration.giftWrap || bookConfiguration.customCover) && (
         <>
           <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
-
           <section className="space-y-2">
             <h3 className="font-semibold">Opzioni extra</h3>
 
             {bookConfiguration.giftWrap && (
-              <div className="text-sm flex items-center gap-1">
-                <CircleCheck size={18} style={{ color: "var(--success)" }} />
-                Confezione regalo
-                {bookConfiguration.giftMessage && (
-                  <p className="ml-5 mt-1 italic opacity-75">
-                    "{bookConfiguration.giftMessage}"
-                  </p>
-                )}
+              <div className="flex flex-col text-sm">
+                <div className="flex items-center gap-1">
+                  <CircleCheck size={18} style={{ color: "var(--success)" }} />
+                  Confezione regalo
+                </div>
+                <div>
+                  {bookConfiguration.giftMessage && (
+                    <p className="ml-5 mt-1 italic opacity-75">
+                      "{bookConfiguration.giftMessage}"
+                    </p>
+                  )}
+                </div>
               </div>
             )}
 
             {bookConfiguration.customCover && (
-              <div className="text-sm flex items-center gap-1">
-                <CircleCheck size={18} style={{ color: "var(--success)" }} />
-                Copertina personalizzata
-                {bookConfiguration.coverLayout && (
-                  <span className="ml-1">
-                    ({coverLayoutDisplayName[bookConfiguration.coverLayout]})
-                  </span>
-                )}
+              <div className="flex flex-col text-sm">
+                <div className="flex items-center gap-1">
+                  {bookConfiguration.coverLayout ? (
+                    <CircleCheck
+                      size={18}
+                      style={{ color: "var(--success)" }}
+                    />
+                  ) : (
+                    <TriangleAlert
+                      size={18}
+                      style={{ color: "var(--warning)" }}
+                    />
+                  )}
+                  Copertina personalizzata
+                </div>
+                <div>
+                  {bookConfiguration.coverLayout ? (
+                    <span className="ml-5 ml-1 italic opacity-75">
+                      ({coverLayoutDisplayName[bookConfiguration.coverLayout]})
+                    </span>
+                  ) : (
+                    <span
+                      className="ml-5 text-cm italic opacity-75"
+                      style={{ color: "var(--warning-foreground)" }}
+                    >
+                      Seleziona un layout
+                    </span>
+                  )}
+                </div>
               </div>
             )}
           </section>
         </>
       )}
+      <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 
-      <div
-        className="p-3 rounded-lg text-sm"
-        style={{
-          backgroundColor:
-            shippingComplete && shippingDataSaved && bookComplete
-              ? "var(--success)"
-              : "var(--warning)",
-          color:
-            shippingComplete && shippingDataSaved && bookComplete
-              ? "var(--success-foreground)"
-              : "var(--warning-foreground)",
-        }}
-      >
-        {shippingComplete && shippingDataSaved && bookComplete ? (
-          <div className="flex items-center gap-2">
-            <CircleCheck size={24} />
-            <span>Configurazione completa! Puoi confermare l'ordine.</span>
+      {!orderConfirmed && (
+        <div
+          className="p-3 rounded-lg text-sm"
+          style={{
+            backgroundColor:
+              shippingComplete && shippingDataSaved && bookComplete
+                ? ""
+                : "var(--warning)",
+            color:
+              shippingComplete && shippingDataSaved && bookComplete
+                ? ""
+                : "var(--warning-foreground)",
+          }}
+        >
+          {shippingComplete && shippingDataSaved && bookComplete ? (
+            <div className="flex items-center gap-2">
+              <div className="flex flex-col">
+                <div className="text-sm font-semibold">Tutto pronto!</div>
+                Clicca sul pulsante qui sotto per completare l'acquisto.
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2">
+              <TriangleAlert size={24} />
+              <span>Completa tutti i campi obbligatori per proseguire.</span>
+            </div>
+          )}
+        </div>
+      )}
+
+      {orderConfirmed ? (
+        <div
+          className="p-4 rounded-lg text-center"
+          style={{
+            backgroundColor: "var(--success)",
+            color: "var(--success-foreground)",
+          }}
+        >
+          <div className="flex flex-col items-center gap-3">
+            <Smile size={48} />
+            <div>
+              <p className="font-bold text-lg">Ordine confermato!</p>
+              <p className="text-sm mt-1">Grazie per averci scelto.</p>
+            </div>
           </div>
-        ) : (
-          <div className="flex items-center gap-2">
-            <TriangleAlert size={24} />
-            <span>Completa tutti i campi obbligatori per proseguire.</span>
-          </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <Button
+          variant="primary"
+          onClick={onConfirmOrder}
+          disabled={!canConfirm}
+          className="w-full"
+        >
+          Conferma ordine
+        </Button>
+      )}
     </aside>
   );
 }

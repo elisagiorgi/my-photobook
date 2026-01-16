@@ -14,7 +14,7 @@ interface ExtraOptionsProps {
   onGiftWrapChange: (checked: boolean) => void;
   onGiftMessageChange: (message: string) => void;
   onCustomCoverChange: (checked: boolean) => void;
-  onCoverLayoutChange: (layout: "single" | "collage") => void;
+  onCoverLayoutChange: (layout: "single" | "collage" | undefined) => void;
 }
 
 export function ExtraOptions({
@@ -27,6 +27,20 @@ export function ExtraOptions({
   onCustomCoverChange,
   onCoverLayoutChange,
 }: ExtraOptionsProps) {
+  const handleCustomCoverChange = (checked: boolean) => {
+    onCustomCoverChange(checked);
+    if (!checked) {
+      onCoverLayoutChange(undefined);
+    }
+  };
+
+  const handleGiftWrapChange = (checked: boolean) => {
+    onGiftWrapChange(checked);
+    if (!checked) {
+      onGiftMessageChange("");
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="space-y-3">
@@ -34,7 +48,9 @@ export function ExtraOptions({
           <Checkbox.Root
             id="giftWrap"
             checked={giftWrap}
-            onCheckedChange={(checked) => onGiftWrapChange(checked === true)}
+            onCheckedChange={(checked) =>
+              handleGiftWrapChange(checked === true)
+            }
             className="w-5 h-5 rounded border-2 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
             style={{
               backgroundColor: giftWrap ? "var(--primary)" : "transparent",
@@ -74,7 +90,9 @@ export function ExtraOptions({
           <Checkbox.Root
             id="customCover"
             checked={customCover}
-            onCheckedChange={(checked) => onCustomCoverChange(checked === true)}
+            onCheckedChange={(checked) =>
+              handleCustomCoverChange(checked === true)
+            }
             className="w-5 h-5 rounded border-2 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
             style={{
               backgroundColor: customCover ? "var(--primary)" : "transparent",

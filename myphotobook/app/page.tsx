@@ -21,11 +21,25 @@ export default function Home() {
     setGiftMessage,
     setCustomCover,
     setCoverLayout,
+    setOrderConfirmed,
   } = usePhotobook();
 
   const handleShippingSubmit = (data: ShippingData) => {
     setShippingData(data);
     console.log("Dati spedizione salvati:", data);
+  };
+
+  const handleConfirmOrder = () => {
+    const orderPayload = {
+      shippingData: state.shippingData,
+      bookConfiguration: state.bookConfiguration,
+      orderDate: new Date().toISOString(),
+    };
+
+    console.log("=== ORDINE CONFERMATO ===");
+    console.log(JSON.stringify(orderPayload, null, 2));
+
+    setOrderConfirmed(true);
   };
 
   return (
@@ -124,7 +138,7 @@ export default function Home() {
           </div>
 
           <div className="lg:col-span-1">
-            <PreviewPanel state={state} />
+            <PreviewPanel state={state} onConfirmOrder={handleConfirmOrder} />
           </div>
         </div>
       </div>

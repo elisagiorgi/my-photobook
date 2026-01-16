@@ -10,7 +10,7 @@ interface BookFormatSelectorProps {
   format: BookFormat | null;
   size: SquareSize | RectangularSize | null;
   onFormatChange: (format: BookFormat) => void;
-  onSizeChange: (size: SquareSize | RectangularSize) => void;
+  onSizeChange: (size: SquareSize | RectangularSize | undefined) => void;
 }
 
 const RECTANGULAR_SIZES: { value: RectangularSize; label: string }[] = [
@@ -25,6 +25,13 @@ export function BookFormatSelector({
   onFormatChange,
   onSizeChange,
 }: BookFormatSelectorProps) {
+  const handleFormatChange = (newFormat: BookFormat) => {
+    onFormatChange(newFormat);
+    if (format !== newFormat) {
+      onSizeChange(undefined);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div>
@@ -33,7 +40,7 @@ export function BookFormatSelector({
           <Button
             type="button"
             variant={format === "square" ? "primary" : "outline"}
-            onClick={() => onFormatChange("square")}
+            onClick={() => handleFormatChange("square")}
             className="h-auto py-4"
           >
             <div className="text-center flex flex-col items-center gap-1">
@@ -44,7 +51,7 @@ export function BookFormatSelector({
           <Button
             type="button"
             variant={format === "horizontal" ? "primary" : "outline"}
-            onClick={() => onFormatChange("horizontal")}
+            onClick={() => handleFormatChange("horizontal")}
             className="h-auto py-4"
           >
             <div className="text-center flex flex-col items-center gap-1">
@@ -55,7 +62,7 @@ export function BookFormatSelector({
           <Button
             type="button"
             variant={format === "vertical" ? "primary" : "outline"}
-            onClick={() => onFormatChange("vertical")}
+            onClick={() => handleFormatChange("vertical")}
             className="h-auto py-4"
           >
             <div className="text-center flex flex-col items-center gap-1">
@@ -98,7 +105,7 @@ export function BookFormatSelector({
             onChange={(e) => onSizeChange(e.target.value as RectangularSize)}
             className="w-full px-3 py-2 rounded-lg border-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 mt-2"
             style={{
-              backgroundColor: "var(--disabled)",
+              backgroundColor: "var(--background)",
               borderColor: "var(--border)",
               color: "var(--text)",
             }}
