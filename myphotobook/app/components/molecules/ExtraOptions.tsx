@@ -4,7 +4,7 @@ import * as Checkbox from "@radix-ui/react-checkbox";
 import { Label } from "@/components/atoms/Label";
 import { Input } from "@/components/atoms/Input";
 import { Button } from "@/components/atoms/Button";
-import { Icon } from "@/components/atoms/Icon";
+import { Check } from "lucide-react";
 
 interface ExtraOptionsProps {
   giftWrap: boolean;
@@ -42,7 +42,7 @@ export function ExtraOptions({
             }}
           >
             <Checkbox.Indicator>
-              <Icon name="check" size="sm" style={{ color: "white" }} />
+              <Check size={18} style={{ color: "white" }} />
             </Checkbox.Indicator>
           </Checkbox.Root>
           <Label htmlFor="giftWrap" className="cursor-pointer mb-0">
@@ -82,7 +82,7 @@ export function ExtraOptions({
             }}
           >
             <Checkbox.Indicator>
-              <Icon name="check" size="sm" style={{ color: "white" }} />
+              <Check size={18} style={{ color: "white" }} />
             </Checkbox.Indicator>
           </Checkbox.Root>
           <Label htmlFor="customCover" className="cursor-pointer mb-0">

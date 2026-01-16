@@ -7,7 +7,7 @@ import { ExtraOptions } from "@/components/molecules/ExtraOptions";
 import { PreviewPanel } from "@/components/organisms/PreviewPanel";
 import { usePhotobook } from "@/app/context/PhotobookContext";
 import type { ShippingData } from "@/app/types/photobook";
-import { Icon } from "@/components/atoms/Icon";
+import { Images, Book, BookOpen, Gift, Truck, Pencil } from "lucide-react";
 
 export default function Home() {
   const {
@@ -39,7 +39,7 @@ export default function Home() {
       <div className="max-w-7xl mx-auto">
         <header className="mb-8">
           <h1 className="text-3xl font-bold mb-2 flex items-center gap-2">
-            <Icon name="photo_library" size="lg" />
+            <Images size={36} />
             Crea il tuo FotoLibro
           </h1>
           <p className="text-sm opacity-75">
@@ -54,7 +54,7 @@ export default function Home() {
               style={{ backgroundColor: "var(--disabled)" }}
             >
               <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                <Icon name="book" size="md" />
+                <Book size={24} />
                 Formato libro
               </h2>
               <BookFormatSelector
@@ -70,7 +70,7 @@ export default function Home() {
               style={{ backgroundColor: "var(--disabled)" }}
             >
               <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                <Icon name="menu_book" size="md" />
+                <BookOpen size={24} />
                 Numero pagine
               </h2>
               <PageCountSelector
@@ -84,7 +84,7 @@ export default function Home() {
               style={{ backgroundColor: "var(--disabled)" }}
             >
               <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                <Icon name="card_giftcard" size="md" />
+                <Gift size={24} />
                 Opzioni extra
               </h2>
               <ExtraOptions
@@ -104,7 +104,7 @@ export default function Home() {
               style={{ backgroundColor: "var(--disabled)" }}
             >
               <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                <Icon name="local_shipping" size="md" />
+                <Truck size={24} />
                 Dati spedizione
               </h2>
               <ShippingForm
@@ -116,7 +116,7 @@ export default function Home() {
                   onClick={() => setShippingDataSaved(false)}
                   className="mt-4 text-sm underline opacity-75 hover:opacity-100 flex items-center gap-1"
                 >
-                  <Icon name="edit" size="sm" />
+                  <Pencil size={18} />
                   Modifica dati
                 </button>
               )}

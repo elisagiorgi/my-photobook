@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/atoms/Button";
 import { Input } from "@/components/atoms/Input";
 import { Label } from "@/components/atoms/Label";
-import { Icon } from "@/components/atoms/Icon";
+import { Hourglass, Save } from "lucide-react";
 import {
   shippingFormSchema,
   type ShippingFormData,
@@ -162,7 +162,7 @@ export function ShippingForm({ onSave, disabled = false }: ShippingFormProps) {
           disabled={disabled || isSubmitting}
           className="flex items-center gap-2"
         >
-          <Icon name={isSubmitting ? "hourglass_empty" : "save"} size="sm" />
+          {isSubmitting ? <Hourglass size={18} /> : <Save size={18} />}
           {isSubmitting ? "Salvataggio..." : "Salva indirizzo"}
         </Button>
       </div>

@@ -1,6 +1,5 @@
 import { Button } from "@/components/atoms/Button";
 import { Label } from "@/components/atoms/Label";
-import { Icon } from "@/components/atoms/Icon";
 import type {
   BookFormat,
   SquareSize,
@@ -38,7 +37,6 @@ export function BookFormatSelector({
             className="h-auto py-4"
           >
             <div className="text-center flex flex-col items-center gap-1">
-              <Icon name="crop_square" size="md" />
               <div className="text-sm">Quadrato</div>
             </div>
           </Button>
@@ -50,7 +48,6 @@ export function BookFormatSelector({
             className="h-auto py-4"
           >
             <div className="text-center flex flex-col items-center gap-1">
-              <Icon name="crop_landscape" size="md" />
               <div className="text-sm">Orizzontale</div>
             </div>
           </Button>
@@ -62,7 +59,6 @@ export function BookFormatSelector({
             className="h-auto py-4"
           >
             <div className="text-center flex flex-col items-center gap-1">
-              <Icon name="crop_portrait" size="md" />
               <div className="text-sm">Verticale</div>
             </div>
           </Button>

@@ -3,7 +3,7 @@ import {
   isShippingDataComplete,
   isBookConfigurationComplete,
 } from "@/app/types/photobook";
-import { Icon } from "@/components/atoms/Icon";
+import { CircleCheck, TriangleAlert } from "lucide-react";
 
 interface PreviewPanelProps {
   state: PhotobookState;
@@ -39,13 +39,11 @@ export function PreviewPanel({ state }: PreviewPanelProps) {
 
       <section className="space-y-2">
         <h3 className="font-semibold flex items-center gap-2">
-          <Icon
-            name={bookComplete ? "check_circle" : "warning"}
-            size="sm"
-            style={{
-              color: bookComplete ? "var(--success)" : "var(--warning)",
-            }}
-          />
+          {bookComplete ? (
+            <CircleCheck size={20} style={{ color: "var(--success)" }} />
+          ) : (
+            <TriangleAlert size={20} style={{ color: "var(--warning)" }} />
+          )}
           Configurazione libro
         </h3>
 
@@ -75,18 +73,11 @@ export function PreviewPanel({ state }: PreviewPanelProps) {
       </section>
       <section className="space-y-2">
         <h3 className="font-semibold flex items-center gap-2">
-          <Icon
-            name={
-              shippingComplete && shippingDataSaved ? "check_circle" : "warning"
-            }
-            size="sm"
-            style={{
-              color:
-                shippingComplete && shippingDataSaved
-                  ? "var(--success)"
-                  : "var(--warning)",
-            }}
-          />
+          {shippingComplete && shippingDataSaved ? (
+            <CircleCheck size={20} style={{ color: "var(--success)" }} />
+          ) : (
+            <TriangleAlert size={20} style={{ color: "var(--warning)" }} />
+          )}
           Dati spedizione
         </h3>
 
@@ -121,11 +112,7 @@ export function PreviewPanel({ state }: PreviewPanelProps) {
 
             {bookConfiguration.giftWrap && (
               <div className="text-sm flex items-center gap-1">
-                <Icon
-                  name="check_circle"
-                  size="sm"
-                  style={{ color: "var(--success)" }}
-                />
+                <CircleCheck size={18} style={{ color: "var(--success)" }} />
                 Confezione regalo
                 {bookConfiguration.giftMessage && (
                   <p className="ml-5 mt-1 italic opacity-75">
@@ -137,11 +124,7 @@ export function PreviewPanel({ state }: PreviewPanelProps) {
 
             {bookConfiguration.customCover && (
               <div className="text-sm flex items-center gap-1">
-                <Icon
-                  name="check_circle"
-                  size="sm"
-                  style={{ color: "var(--success)" }}
-                />
+                <CircleCheck size={18} style={{ color: "var(--success)" }} />
                 Copertina personalizzata
                 {bookConfiguration.coverLayout && (
                   <span className="ml-1">
@@ -169,12 +152,12 @@ export function PreviewPanel({ state }: PreviewPanelProps) {
       >
         {shippingComplete && shippingDataSaved && bookComplete ? (
           <div className="flex items-center gap-2">
-            <Icon name="check_circle" size="md" />
+            <CircleCheck size={24} />
             <span>Configurazione completa! Puoi confermare l'ordine.</span>
           </div>
         ) : (
           <div className="flex items-center gap-2">
-            <Icon name="warning" size="md" />
+            <TriangleAlert size={24} />
             <span>Completa tutti i campi obbligatori per proseguire.</span>
           </div>
         )}
