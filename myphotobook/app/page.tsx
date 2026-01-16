@@ -51,9 +51,12 @@ export default function Home() {
       }}
     >
       <div className="max-w-7xl mx-auto">
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold mb-2 flex items-center gap-2">
-            <Images size={36} />
+        <header className="mb-8" role="banner">
+          <h1
+            id="main-title"
+            className="text-3xl font-bold mb-2 flex items-center gap-2"
+          >
+            <Images size={36} aria-hidden="true" />
             Crea il tuo FotoLibro
           </h1>
           <p className="text-sm opacity-75">
@@ -61,7 +64,11 @@ export default function Home() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+          role="main"
+          aria-labelledby="main-title"
+        >
           <div className="lg:col-span-2 space-y-6">
             <section
               className="rounded-2xl p-6"

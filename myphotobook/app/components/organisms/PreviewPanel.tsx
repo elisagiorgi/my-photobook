@@ -31,23 +31,40 @@ export function PreviewPanel({ state, onConfirmOrder }: PreviewPanelProps) {
   };
 
   return (
-    <aside
+    <section
       className="rounded-2xl p-6 space-y-6 sticky top-4"
       style={{ backgroundColor: "var(--disabled)" }}
+      role="complementary"
+      aria-label="Riepilogo ordine"
     >
       <header>
         <h2 className="text-xl font-bold mb-1">Riepilogo ordine</h2>
         <p className="text-sm opacity-75">Configurazione del tuo fotolibro</p>
       </header>
 
-      <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
+      <div
+        className="h-px"
+        style={{ backgroundColor: "var(--border)" }}
+        aria-hidden="true"
+      />
 
-      <section className="space-y-2">
-        <h3 className="font-semibold flex items-center gap-2">
+      <section className="space-y-2" aria-labelledby="config-heading">
+        <h3
+          id="config-heading"
+          className="font-semibold flex items-center gap-2"
+        >
           {bookComplete ? (
-            <CircleCheck size={20} style={{ color: "var(--success)" }} />
+            <CircleCheck
+              size={20}
+              style={{ color: "var(--success)" }}
+              aria-hidden="true"
+            />
           ) : (
-            <TriangleAlert size={20} style={{ color: "var(--warning)" }} />
+            <TriangleAlert
+              size={20}
+              style={{ color: "var(--warning)" }}
+              aria-hidden="true"
+            />
           )}
           Configurazione libro
         </h3>
@@ -76,14 +93,29 @@ export function PreviewPanel({ state, onConfirmOrder }: PreviewPanelProps) {
           </p>
         )}
       </section>
-      <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
+      <div
+        className="h-px"
+        style={{ backgroundColor: "var(--border)" }}
+        aria-hidden="true"
+      />
 
-      <section className="space-y-2">
-        <h3 className="font-semibold flex items-center gap-2">
+      <section className="space-y-2" aria-labelledby="shipping-heading">
+        <h3
+          id="shipping-heading"
+          className="font-semibold flex items-center gap-2"
+        >
           {shippingComplete && shippingDataSaved ? (
-            <CircleCheck size={20} style={{ color: "var(--success)" }} />
+            <CircleCheck
+              size={20}
+              style={{ color: "var(--success)" }}
+              aria-hidden="true"
+            />
           ) : (
-            <TriangleAlert size={20} style={{ color: "var(--warning)" }} />
+            <TriangleAlert
+              size={20}
+              style={{ color: "var(--warning)" }}
+              aria-hidden="true"
+            />
           )}
           Dati spedizione
         </h3>
@@ -206,9 +238,11 @@ export function PreviewPanel({ state, onConfirmOrder }: PreviewPanelProps) {
             backgroundColor: "var(--success)",
             color: "var(--success-foreground)",
           }}
+          role="status"
+          aria-live="polite"
         >
           <div className="flex flex-col items-center gap-3">
-            <Smile size={48} />
+            <Smile size={48} aria-hidden="true" />
             <div>
               <p className="font-bold text-lg">Ordine confermato!</p>
               <p className="text-sm mt-1">Grazie per averci scelto.</p>
@@ -221,10 +255,15 @@ export function PreviewPanel({ state, onConfirmOrder }: PreviewPanelProps) {
           onClick={onConfirmOrder}
           disabled={!canConfirm}
           className="w-full"
+          aria-label={
+            canConfirm
+              ? "Conferma ordine"
+              : "Completa tutti i campi per confermare l'ordine"
+          }
         >
           Conferma ordine
         </Button>
       )}
-    </aside>
+    </section>
   );
 }

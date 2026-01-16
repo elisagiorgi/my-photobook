@@ -56,9 +56,10 @@ export function ExtraOptions({
               backgroundColor: giftWrap ? "var(--primary)" : "transparent",
               borderColor: giftWrap ? "var(--primary)" : "var(--border)",
             }}
+            aria-label="Confezione regalo"
           >
             <Checkbox.Indicator>
-              <Check size={18} style={{ color: "white" }} />
+              <Check size={18} style={{ color: "white" }} aria-hidden="true" />
             </Checkbox.Indicator>
           </Checkbox.Root>
           <Label htmlFor="giftWrap" className="cursor-pointer mb-0">
@@ -98,9 +99,10 @@ export function ExtraOptions({
               backgroundColor: customCover ? "var(--primary)" : "transparent",
               borderColor: customCover ? "var(--primary)" : "var(--border)",
             }}
+            aria-label="Copertina fotografica personalizzata"
           >
             <Checkbox.Indicator>
-              <Check size={18} style={{ color: "white" }} />
+              <Check size={18} style={{ color: "white" }} aria-hidden="true" />
             </Checkbox.Indicator>
           </Checkbox.Root>
           <Label htmlFor="customCover" className="cursor-pointer mb-0">
