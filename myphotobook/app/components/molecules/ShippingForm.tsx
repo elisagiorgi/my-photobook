@@ -118,6 +118,25 @@ export function ShippingForm({ onSave, disabled = false }: ShippingFormProps) {
             disabled={disabled}
             placeholder="20100"
             maxLength={5}
+            inputMode="numeric"
+            pattern="[0-9]*"
+            onKeyDown={(e) => {
+              if (
+                !/[0-9]/.test(e.key) &&
+                ![
+                  "Backspace",
+                  "Delete",
+                  "Tab",
+                  "ArrowLeft",
+                  "ArrowRight",
+                ].includes(e.key)
+              ) {
+                e.preventDefault();
+              }
+            }}
+            onChange={(e) => {
+              e.target.value = e.target.value.replace(/\D/g, "");
+            }}
           />
           {errors.postalCode && (
             <p className="text-sm mt-1" style={{ color: "var(--error)" }}>

@@ -10,7 +10,7 @@ interface BookFormatSelectorProps {
   format: BookFormat | null;
   size: SquareSize | RectangularSize | null;
   onFormatChange: (format: BookFormat) => void;
-  onSizeChange: (size: SquareSize | RectangularSize | undefined) => void;
+  onSizeChange: (size: SquareSize | RectangularSize | null) => void;
 }
 
 const RECTANGULAR_SIZES: { value: RectangularSize; label: string }[] = [
@@ -28,7 +28,7 @@ export function BookFormatSelector({
   const handleFormatChange = (newFormat: BookFormat) => {
     onFormatChange(newFormat);
     if (format !== newFormat) {
-      onSizeChange(undefined);
+      onSizeChange(null);
     }
   };
 

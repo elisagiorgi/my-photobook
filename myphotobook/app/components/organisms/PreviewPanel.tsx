@@ -182,12 +182,12 @@ export function PreviewPanel({ state, onConfirmOrder }: PreviewPanelProps) {
                 </div>
                 <div>
                   {bookConfiguration.coverLayout ? (
-                    <span className="ml-5 ml-1 italic opacity-75">
+                    <span className="ml-5 mt-1 italic opacity-75">
                       ({coverLayoutDisplayName[bookConfiguration.coverLayout]})
                     </span>
                   ) : (
                     <span
-                      className="ml-5 text-cm italic opacity-75"
+                      className="ml-5 mt-1 text-sm italic opacity-75"
                       style={{ color: "var(--warning-foreground)" }}
                     >
                       Seleziona un layout
@@ -207,19 +207,22 @@ export function PreviewPanel({ state, onConfirmOrder }: PreviewPanelProps) {
           style={{
             backgroundColor:
               shippingComplete && shippingDataSaved && bookComplete
-                ? ""
+                ? "var(--success)"
                 : "var(--warning)",
             color:
               shippingComplete && shippingDataSaved && bookComplete
-                ? ""
+                ? "var(--success-foreground)"
                 : "var(--warning-foreground)",
           }}
         >
           {shippingComplete && shippingDataSaved && bookComplete ? (
             <div className="flex items-center gap-2">
+              <CircleCheck size={20} />
               <div className="flex flex-col">
-                <div className="text-sm font-semibold">Tutto pronto!</div>
-                Clicca sul pulsante qui sotto per completare l'acquisto.
+                <div className="font-semibold">Tutto pronto!</div>
+                <div className="text-xs opacity-90">
+                  Clicca sul pulsante qui sotto per completare l'acquisto.
+                </div>
               </div>
             </div>
           ) : (
