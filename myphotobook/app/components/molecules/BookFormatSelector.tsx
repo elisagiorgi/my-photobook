@@ -26,10 +26,10 @@ export function BookFormatSelector({
   onSizeChange,
 }: BookFormatSelectorProps) {
   const handleFormatChange = (newFormat: BookFormat) => {
-    onFormatChange(newFormat);
     if (format !== newFormat) {
       onSizeChange(null);
     }
+    onFormatChange(newFormat);
   };
 
   return (
@@ -102,7 +102,11 @@ export function BookFormatSelector({
           <select
             id="rectangularSize"
             value={size || ""}
-            onChange={(e) => onSizeChange(e.target.value as RectangularSize)}
+            onChange={(e) =>
+              onSizeChange(
+                e.target.value ? (e.target.value as RectangularSize) : null,
+              )
+            }
             className="w-full px-3 py-2 rounded-lg border-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 mt-2"
             style={{
               backgroundColor: "var(--background)",
