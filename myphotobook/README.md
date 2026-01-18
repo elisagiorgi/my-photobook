@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📸 My PhotoBook
 
-## Getting Started
+Un'applicazione web moderna per configurare e ordinare fotolibri personalizzati con un'interfaccia intuitiva e in tempo reale.
 
-First, run the development server:
+## 🚀 Tecnologie
+
+- **Next.js 16** - Framework React con App Router
+- **TypeScript** - Type safety
+- **React Hook Form** - Gestione form con validazione Zod
+- **Radix UI** - Componenti accessibili
+- **Tailwind CSS** - Styling moderno
+- **Lucide React** - Icone
+
+## 📦 Installazione
 
 ```bash
+# Installa le dipendenze
+npm install
+
+# Avvia il server di sviluppo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Apri [http://localhost:3000](http://localhost:3000) nel browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎯 Come funziona
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Configura il libro**: Scegli formato, dimensione e numero di pagine
+2. **Aggiungi opzioni extra**: Seleziona confezione regalo o copertina personalizzata
+3. **Inserisci i dati spedizione**: Compila il form con i tuoi dati
+4. **Controlla il riepilogo**: Verifica tutte le scelte nel pannello laterale
+5. **Conferma l'ordine**: Quando tutto è completo, clicca "Conferma ordine"
 
-## Learn More
+## 🏗️ Struttura del progetto
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+├── components/       # Componenti UI organizzati per atomic design
+│   ├── atoms/       # Componenti base (Button, Input, Label)
+│   ├── molecules/   # Componenti compositi (Form, Selector)
+│   └── organisms/   # Componenti complessi (PreviewPanel)
+├── context/         # Gestione stato globale
+├── lib/            # Utilities e validazioni
+└── types/          # Definizioni TypeScript
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧪 Build per produzione
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+npm start
+```
 
-## Deploy on Vercel
+## 🌐 Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Applicazione deployata su **Vercel**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📝 Note
+
+- L'applicazione non richiede backend e mantiene tutto in memoria
+- I dati vengono validati sia lato client che con schemi Zod
+- Interfaccia responsive per desktop e mobile
+
+---
