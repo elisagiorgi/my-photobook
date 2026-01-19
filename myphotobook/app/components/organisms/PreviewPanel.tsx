@@ -157,7 +157,7 @@ export function PreviewPanel({ state, onConfirmOrder }: PreviewPanelProps) {
                 <div>
                   {bookConfiguration.giftMessage && (
                     <p className="ml-5 mt-1 italic opacity-75">
-                      "{bookConfiguration.giftMessage}"
+                      &quot;{bookConfiguration.giftMessage}&quot;
                     </p>
                   )}
                 </div>
@@ -221,7 +221,7 @@ export function PreviewPanel({ state, onConfirmOrder }: PreviewPanelProps) {
               <div className="flex flex-col">
                 <div className="font-semibold">Tutto pronto!</div>
                 <div className="text-xs opacity-90">
-                  Clicca sul pulsante qui sotto per completare l'acquisto.
+                  Clicca sul pulsante qui sotto per completare l&apos;acquisto.
                 </div>
               </div>
             </div>

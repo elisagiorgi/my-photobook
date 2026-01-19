@@ -66,8 +66,8 @@ export function PageCountSelector({ pages, onChange }: PageCountSelectorProps) {
         >
           <TriangleAlert size={24} />
           <div>
-            <strong>Attenzione:</strong> il costo aumenterà per l'aggiunta di
-            pagine extra.
+            <strong>Attenzione:</strong> il costo aumenterà per l&apos;aggiunta
+            di pagine extra.
           </div>
         </div>
       )}
