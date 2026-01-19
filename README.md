@@ -54,6 +54,7 @@ npm start
 ## 🌐 Deploy
 
 Applicazione deployata su **Vercel**
+https://my-photobook-beta.vercel.app/
 
 ## 📝 Note
 
