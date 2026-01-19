@@ -26,7 +26,6 @@ export default function Home() {
 
   const handleShippingSubmit = (data: ShippingData) => {
     setShippingData(data);
-    console.log("Dati spedizione salvati:", data);
   };
 
   const handleConfirmOrder = () => {

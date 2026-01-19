@@ -5,11 +5,11 @@ import { PhotobookProvider } from "@/app/context/PhotobookContext";
 export const metadata: Metadata = {
   title: "My PhotoBook - Crea il tuo fotolibro personalizzato",
   description:
-    "Crea il tuo fotolibro personalizzato con le tue foto preferite. Scegli formato, dimensioni e opzioni extra per un libro unico.",
+    "Configura online il tuo fotolibro con formato, dimensioni e opzioni personalizzate. Interfaccia intuitiva per creare ricordi unici.",
   openGraph: {
-    title: "My PhotoBook - Crea il tuo fotolibro personalizzato",
+    title: "My PhotoBook 📸 | Fotolibri personalizzati in pochi click",
     description:
-      "Crea il tuo fotolibro personalizzato con le tue foto preferite. Scegli formato, dimensioni e opzioni extra per un libro unico.",
+      "✨ Scegli formato, numero di pagine, confezione regalo e copertina personalizzata. Crea il tuo fotolibro perfetto in tempo reale!",
     type: "website",
     locale: "it_IT",
     siteName: "My PhotoBook",
@@ -22,7 +22,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
